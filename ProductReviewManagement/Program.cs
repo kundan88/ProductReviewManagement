@@ -5,10 +5,12 @@ namespace Product_Review_Management
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Product Review Management");
+            Console.WriteLine(" Product Review Management");
 
             ProductReviewManagement productReview = new ProductReviewManagement();
-            productReview.RetrieveRecords();        }
+            productReview.CountProductId();
+           
+        }
     }
 }
 

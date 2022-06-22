@@ -18,7 +18,7 @@ namespace Product_Review_Management
             ProductReviewsList.Add(new ProductReview() { ProductID = 1, UserID = 1, Rating = 1, Review = "good", IsLike = true });
             ProductReviewsList.Add(new ProductReview() { ProductID = 3, UserID = 2, Rating = 1, Review = "good", IsLike = true });
             ProductReviewsList.Add(new ProductReview() { ProductID = 4, UserID = 2, Rating = 2, Review = "bad", IsLike = false });
-            ProductReviewsList.Add(new ProductReview() { ProductID = 5, UserID = 4, Rating = 2, Review = "bad", IsLike = true });
+            ProductReviewsList.Add(new ProductReview() { ProductID = 5, UserID = 3, Rating = 2, Review = "bad", IsLike = true });
             ProductReviewsList.Add(new ProductReview() { ProductID = 5, UserID = 3, Rating = 2, Review = "good", IsLike = false });
             ProductReviewsList.Add(new ProductReview() { ProductID = 7, UserID = 4, Rating = 3, Review = "bad", IsLike = true });
             ProductReviewsList.Add(new ProductReview() { ProductID = 7, UserID = 4, Rating = 3, Review = "good", IsLike = true });
@@ -38,20 +38,20 @@ namespace Product_Review_Management
             ProductReviewsList.Add(new ProductReview() { ProductID = 9, UserID = 11, Rating = 5, Review = "bad", IsLike = false });
             ProductReviewsList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 3, Review = "good", IsLike = true });
             ProductReviewsList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 3, Review = "average", IsLike = true });
-            ProductReviewsList.Add(new ProductReview() { ProductID = 24, UserID = 12, Rating = 4, Review = "good", IsLike = true });
+            ProductReviewsList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 4, Review = "average", IsLike = true });
             return ProductReviewsList.Count;
         }
-       
         
-        public string RetrieveRecords()
+       
+        public string CountProductId()
         {
-            AddProductReview();
             string nameList = "";
-            var productList = (from product in ProductReviewsList where product.Rating > 3 && (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9) select product);
-            foreach (var product in productList)
+            AddProductReview();
+            var productList = ProductReviewsList.GroupBy(x => x.ProductID).Select(a => new { ProductID = a.Key, count = a.Count() });
+            foreach (var element in productList)
             {
-                nameList += product.UserID + " ";
-                Console.WriteLine("ProductId: {0} : UserId: {1} : Review: {2} : Rating: {3} : IsLike:{4}\n", product.ProductID, product.UserID, product.Review, product.Rating, product.IsLike);
+                Console.WriteLine("ProductId " + element.ProductID + " " + "Count " + " " + element.count);
+                nameList += element.count + " ";
             }
             return nameList;
         }
