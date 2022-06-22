@@ -43,17 +43,17 @@ namespace Product_Review_Management
         }
         
        
-        public string CountProductId()
+        public string RetrieveProductIdAndReviews()
         {
-            string nameList = "";
+            string result = "";
             AddProductReview();
-            var productList = ProductReviewsList.GroupBy(x => x.ProductID).Select(a => new { ProductID = a.Key, count = a.Count() });
+            var productList = ProductReviewsList.Select(product => new { ProductId = product.ProductID, Review = product.Review }).ToList();
             foreach (var element in productList)
             {
-                Console.WriteLine("ProductId " + element.ProductID + " " + "Count " + " " + element.count);
-                nameList += element.count + " ";
+                Console.WriteLine("ProductId: " + element.ProductId + "\tReview: " + element.Review);
+                result += element.ProductId + " ";
             }
-            return nameList;
+            return result;
         }
     }
 }
