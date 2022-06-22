@@ -12,6 +12,7 @@ namespace Product_Review_Management
         public List<ProductReview> ProductReviewsList = new List<ProductReview>();
         DataTable productdt;
 
+        // UC 1: Adding a Productreview details
         public int AddProductReview()
         {
             ProductReviewsList.Add(new ProductReview() { ProductID = 1, UserID = 1, Rating = 1, Review = "good", IsLike = true });
@@ -41,17 +42,29 @@ namespace Product_Review_Management
             ProductReviewsList.Add(new ProductReview() { ProductID = 25, UserID = 12, Rating = 4, Review = "average", IsLike = true });
             return ProductReviewsList.Count;
         }
+        public void DisplayList()
+        {
+            foreach (ProductReview product in ProductReviewsList)
+            {
+                Console.WriteLine("ProductId: {0} : UserId: {1} : Review: {2} : Rating: {3} : IsLike:{4}\n", product.ProductID, product.UserID, product.Review, product.Rating, product.IsLike);
+            }
+        }
         
-        public string Skip5Record()
+        public int CreateDataTable()
         {
             AddProductReview();
-            string nameList = "";
-            var result = (from product in ProductReviewsList orderby product.Rating descending select product).Skip(5).ToList();
-            foreach (var element in result)
+            productdt = new DataTable();
+            productdt.Columns.Add("ProductId", typeof(Int32));
+            productdt.Columns.Add("UserId", typeof(Int32));
+            productdt.Columns.Add("Rating", typeof(Int32));
+            productdt.Columns.Add("Review", typeof(string));
+            productdt.Columns.Add("IsLike", typeof(bool));
+
+            foreach (var data in ProductReviewsList)
             {
-                nameList += element.ProductID + " ";
+                productdt.Rows.Add(data.ProductID, data.UserID, data.Rating, data.Review, data.IsLike);
             }
-            return nameList;
+            return productdt.Rows.Count;
         }
     }
 }

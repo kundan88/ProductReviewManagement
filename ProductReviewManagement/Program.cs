@@ -5,11 +5,11 @@ namespace Product_Review_Management
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine(" Product Review Management");
+            Console.WriteLine("Product Review Management");
 
             ProductReviewManagement productReview = new ProductReviewManagement();
-            productReview.Skip5Record();
-           
+            productReview.CreateDataTable();
+            productReview.DisplayList();
         }
     }
 }
