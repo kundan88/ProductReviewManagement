@@ -42,18 +42,16 @@ namespace Product_Review_Management
             return ProductReviewsList.Count;
         }
         
-       
-        public string RetrieveProductIdAndReviews()
+        public string Skip5Record()
         {
-            string result = "";
             AddProductReview();
-            var productList = ProductReviewsList.Select(product => new { ProductId = product.ProductID, Review = product.Review }).ToList();
-            foreach (var element in productList)
+            string nameList = "";
+            var result = (from product in ProductReviewsList orderby product.Rating descending select product).Skip(5).ToList();
+            foreach (var element in result)
             {
-                Console.WriteLine("ProductId: " + element.ProductId + "\tReview: " + element.Review);
-                result += element.ProductId + " ";
+                nameList += element.ProductID + " ";
             }
-            return result;
+            return nameList;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Product_Review_Management
             Console.WriteLine(" Product Review Management");
 
             ProductReviewManagement productReview = new ProductReviewManagement();
-            productReview.RetrieveProductIdAndReviews();
+            productReview.Skip5Record();
            
         }
     }
