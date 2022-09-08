@@ -6,9 +6,11 @@
         {
             Console.WriteLine("Welcome to the Product Review Management");
 
-            ProductReviewManagement productReview = new ProductReviewManagement();
-            productReview.AddProductReview();
-            productReview.DisplayList();
+           ProductReviewManagement productReview = new ProductReviewManagement();
+            //productReview.AddProductReview();
+            // productReview.DisplayList();
+            productReview.RetrieveTopThreeRating();
+            
         }
     }
 }
