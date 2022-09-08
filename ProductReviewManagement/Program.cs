@@ -17,7 +17,8 @@
             //productReview.CreateDataTable();
             //productReview.ReturnsOnlyIsLikeFieldAsTrue();
             //productReview.AverageofRatingBasedonProductId();
-            productReview.ReturnsReviewMessageContainsNice();
+            //productReview.ReturnsReviewMessageContainsNice();
+            productReview.RetrieveRecordsBasedOnRating();
             
         }
     }

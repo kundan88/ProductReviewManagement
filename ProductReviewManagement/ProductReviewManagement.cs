@@ -166,6 +166,20 @@ namespace ProductReviewManagement
             }
             return nameList;
         }
+        //UC 12: Retrieve Record based on Rating where userid=10 
+        public string RetrieveRecordsBasedOnRating()
+        {
+            CreateDataTable();
+            string nameList = "";
+            var res = (from product in productdt.AsEnumerable() where product.Field<Int32>("UserID") == 10 orderby product.Field<int>("Rating") select product).ToList();
+            foreach (var p in res)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", p["ProductID"], p["UserID"], p["Rating"], p["Review"], p["IsLike"]);
+                nameList += p["Rating"] + " ";
+            }
+            return nameList;
+        }
+
 
 
     }
