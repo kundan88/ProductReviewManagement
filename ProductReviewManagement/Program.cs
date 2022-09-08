@@ -13,7 +13,8 @@
             //productReview.RetrieveRecordsBasedOnRatingAndProductId();
             // productReview.CountingProductId();
             // productReview.RetrieveOnlyProductIdAndReviews();
-            productReview.SkipTop5Record();
+            //productReview.SkipTop5Record();
+            productReview.CreateDataTable();
             
         }
     }

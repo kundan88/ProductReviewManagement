@@ -107,5 +107,22 @@ namespace ProductReviewManagement
             }
             return nameList;
         }
+        // UC 8: Adding a Productreview details in Data Table
+        public int CreateDataTable()
+        {
+            AddProductReview();
+            productdt = new DataTable();
+            productdt.Columns.Add("ProductId", typeof(Int32));
+            productdt.Columns.Add("UserId", typeof(Int32));
+            productdt.Columns.Add("Rating", typeof(Int32));
+            productdt.Columns.Add("Review", typeof(string));
+            productdt.Columns.Add("IsLike", typeof(bool));
+
+            foreach (var data in ProductReviewsList)
+            {
+                productdt.Rows.Add(data.ProductID, data.UserID, data.Rating, data.Review, data.IsLike);
+            }
+            return productdt.Rows.Count;
+        }
     }
 }
