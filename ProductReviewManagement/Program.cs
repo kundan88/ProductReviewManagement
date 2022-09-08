@@ -8,8 +8,9 @@
 
            ProductReviewManagement productReview = new ProductReviewManagement();
             //productReview.AddProductReview();
-            // productReview.DisplayList();
-            productReview.RetrieveTopThreeRating();
+            //productReview.DisplayList();
+           // productReview.RetrieveTopThreeRating();
+            productReview.RetrieveRecordsBasedOnRatingAndProductId();
             
         }
     }
